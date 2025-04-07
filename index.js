@@ -1,3 +1,12 @@
-// run `node index.js` in the terminal
+import express from 'express'
 
-console.log(`Hello Node.js v${process.versions.node}!`);
+const app = express()
+
+function requestCallback(request, response) {
+    console.log('request received')
+    response.status(200).send('request received')
+}
+
+app.get('/', requestCallback)
+
+app.listen(3000)
